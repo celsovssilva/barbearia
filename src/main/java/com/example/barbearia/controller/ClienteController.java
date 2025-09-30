@@ -37,7 +37,7 @@ public class ClienteController {
 
     @DeleteMapping("/deletar/{id}")
     public void deletarCliente(long id){
-        clienteService.deletar(id);
+        clienteService.deletarCliente(id);
     }
     
     
