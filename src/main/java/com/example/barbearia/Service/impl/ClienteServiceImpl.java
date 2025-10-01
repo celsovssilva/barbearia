@@ -1,9 +1,12 @@
 package com.example.barbearia.Service.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.example.barbearia.Model.ClienteModel;
 import com.example.barbearia.Repository.ClienteRepository;
 import com.example.barbearia.Service.ClienteService;
 
+@Service
 public class ClienteServiceImpl implements ClienteService{
     private final ClienteRepository clienteRepository;
     public ClienteServiceImpl(ClienteRepository clienteRepository){

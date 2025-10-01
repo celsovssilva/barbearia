@@ -1,16 +1,16 @@
 package com.example.barbearia.controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import com.example.barbearia.Service.BarbeiroService;
-import com.example.barbearia.Model.BarbeiroModel;
-import com.example.barbearia.Repository.BarbeiroRepository;
-
 import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.barbearia.Model.BarbeiroModel;
+import com.example.barbearia.Repository.BarbeiroRepository;
+import com.example.barbearia.Service.BarbeiroService;
 
 
 
@@ -28,7 +28,7 @@ public class BarbeiroController {
 
     @GetMapping
     public List<BarbeiroModel> mostrarBarbeiro(){
-        return barbeiroService.mostrarBarbeiros();
+        return barbeiroService.listarBarbeiros();
     }
 
     @PostMapping("/cadastrar")
@@ -38,12 +38,12 @@ public class BarbeiroController {
 
     @GetMapping("/buscar/{id}")
     public BarbeiroModel buscar(Long id){
-        return barbeiroService.buscar(id);
+        return barbeiroService.buscarBarbeiro(id);
     }
 
     @DeleteMapping("/deletar/{id}")
     public void deletar(long id){
-        barbeiroService.deletar(id);
+        barbeiroService.deletarBarbeiro(id);
     }
     
     
