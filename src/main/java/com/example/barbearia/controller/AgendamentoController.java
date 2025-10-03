@@ -1,8 +1,6 @@
 package com.example.barbearia.controller;
 
 
-import java.util.List;
-
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,11 +33,12 @@ public class AgendamentoController {
     }
 
     @GetMapping("/buscar/{nome}")
-    public List<BarbeiroModel> buscarBarbeiroporNome(@PathVariable String nome){
-        return (List<BarbeiroModel>) agendamentoService.buscarBarbeiroporNome(nome);
+    public BarbeiroModel buscarBarbeiroporNome(@PathVariable String nome){
+        
+        return  agendamentoService.buscarBarbeiroporNome(nome);
     }
     
-    @DeleteMapping("/deletarbarbeiro/{id}")
+    @DeleteMapping("/deletaragendamento/{id}")
      public void deletarAgendamento(Long id){
     agendamentoService.deletarAgendamento(id);}
 
