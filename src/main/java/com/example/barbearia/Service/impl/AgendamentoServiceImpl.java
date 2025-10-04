@@ -28,9 +28,9 @@ public class AgendamentoServiceImpl implements  AgendamentoService{
 
         @Override
         public AgendamentoModel salvarAgendamento(AgendamentoModel agendamento){
-            LocalDateTime dataHora = agendamento.getDataHora();
-            BarbeiroModel nome = agendamento.getNome();
-            if(agendamentoRepository.existsByDataHoraAndNome(dataHora, nome)){
+            LocalDateTime dataHora = agendamento.getDataHoraInicio();
+            BarbeiroModel nomeBarbeiro = agendamento.getNomeBarbeiro();
+            if(agendamentoRepository.existsByDataHoraInicioAndNomeBarbeiro(dataHora, nomeBarbeiro)){
                 
                  throw new IllegalArgumentException("Erro: Horário já agendado para este barbeiro.");
                 

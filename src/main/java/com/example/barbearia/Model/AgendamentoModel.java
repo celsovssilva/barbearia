@@ -24,8 +24,11 @@ public class AgendamentoModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String servico;
-    private LocalDateTime dataHora;
+    private LocalDateTime dataHoraInicio;
+    private LocalDateTime datahoraFim;
     @ManyToOne
-    private BarbeiroModel nome;
+    private BarbeiroModel nomeBarbeiro;
+    @ManyToOne
+    private ClienteModel nomeCliente;
 
 }

@@ -10,4 +10,4 @@ public class BarbeariaApplication {
 		SpringApplication.run(BarbeariaApplication.class, args);
 	}
 
-}
+	}
