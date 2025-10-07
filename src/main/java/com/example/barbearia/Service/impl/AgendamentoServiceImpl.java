@@ -9,6 +9,7 @@ import com.example.barbearia.Model.BarbeiroModel;
 import com.example.barbearia.Repository.AgendamentoRepository;
 import com.example.barbearia.Repository.BarbeiroRepository;
 import com.example.barbearia.Service.AgendamentoService;
+import com.example.barbearia.Model.ClienteModel;
 
 @Service
 public class AgendamentoServiceImpl implements  AgendamentoService{
@@ -29,13 +30,19 @@ public class AgendamentoServiceImpl implements  AgendamentoService{
         @Override
         public AgendamentoModel salvarAgendamento(AgendamentoModel agendamento){
             LocalDateTime dataHora = agendamento.getDataHoraInicio();
+            LocalDateTime dataHoraFim = agendamento.getDatahoraFim();
             BarbeiroModel nomeBarbeiro = agendamento.getNomeBarbeiro();
-            if(agendamentoRepository.existsByDataHoraInicioAndNomeBarbeiro(dataHora, nomeBarbeiro)){
+            if(agendamentoRepository.existsByDataHoraInicioAndDatahoraFimAndNomeBarbeiro(dataHora,dataHoraFim, nomeBarbeiro)){
                 
-                 throw new IllegalArgumentException("Erro: Horário já agendado para este barbeiro.");
+                throw new IllegalArgumentException("Horário indisponível para o barbeiro selecionado.");
                 
             }
             return agendamentoRepository.save(agendamento);
+        }
+
+        @Override
+        public AgendamentoModel buscarAgendamentoDoDia(LocalDateTime data,LocalDateTime dataHoraFim){
+            return agendamentoRepository.findByDataHoraInicio(data,dataHoraFim);
         }
 
         @Override

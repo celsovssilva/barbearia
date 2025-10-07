@@ -1,9 +1,11 @@
 package com.example.barbearia.Service.impl;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
+
+import com.example.barbearia.Model.BarbeiroModel;
 import com.example.barbearia.Repository.BarbeiroRepository;
 import com.example.barbearia.Service.BarbeiroService;
-import com.example.barbearia.Model.BarbeiroModel;
-import java.util.List;
 
 
 
@@ -22,6 +24,7 @@ public class BarbeiroServiceImpl implements BarbeiroService {
     @Override
     public List<BarbeiroModel> listarBarbeiros(){
         return barbeiroRepository.findAll();
+        
     }
 
     @Override

@@ -26,6 +26,9 @@ public class BarbeiroModel {
     @Getter
     @Setter
     private String telefone;
+    @Getter
+    @Setter
+    private AgendamentoModel agendamento;
 
 
 }
