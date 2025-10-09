@@ -1,6 +1,7 @@
 package com.example.barbearia.Service.impl;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,7 @@ import com.example.barbearia.Model.BarbeiroModel;
 import com.example.barbearia.Repository.AgendamentoRepository;
 import com.example.barbearia.Repository.BarbeiroRepository;
 import com.example.barbearia.Service.AgendamentoService;
-import com.example.barbearia.Model.ClienteModel;
+
 
 @Service
 public class AgendamentoServiceImpl implements  AgendamentoService{
@@ -41,8 +42,8 @@ public class AgendamentoServiceImpl implements  AgendamentoService{
         }
 
         @Override
-        public AgendamentoModel buscarAgendamentoDoDia(LocalDateTime data,LocalDateTime dataHoraFim){
-            return agendamentoRepository.findByDataHoraInicio(data,dataHoraFim);
+        public List<AgendamentoModel> buscarAgendamentoDoDia(LocalDateTime data,LocalDateTime dataHoraFim){
+            return agendamentoRepository.findByDataHoraInicioBetween(data,dataHoraFim);
         }
 
         @Override

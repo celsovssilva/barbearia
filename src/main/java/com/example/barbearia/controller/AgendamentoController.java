@@ -37,6 +37,10 @@ public class AgendamentoController {
         
         return  agendamentoService.buscarBarbeiroporNome(nome);
     }
+    @GetMapping("/buscaragendamento/{data}/{dataHoraFim}")
+     public AgendamentoModel buscarAgendamentoDoDia(@PathVariable LocalDateTime datahora,@PathVariable LocalDateTime dataHoraFim){
+        return agendamentoService.buscarAgendamentoDoDia(datahora,dataHoraFim);
+    }
     
     @DeleteMapping("/deletaragendamento/{id}")
      public void deletarAgendamento(Long id){
