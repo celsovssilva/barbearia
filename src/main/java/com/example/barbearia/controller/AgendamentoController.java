@@ -1,12 +1,17 @@
 package com.example.barbearia.controller;
 
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.barbearia.Model.AgendamentoModel;
@@ -37,11 +42,15 @@ public class AgendamentoController {
         
         return  agendamentoService.buscarBarbeiroporNome(nome);
     }
-    @GetMapping("/buscaragendamento/{data}/{dataHoraFim}")
-     public AgendamentoModel buscarAgendamentoDoDia(@PathVariable LocalDateTime datahora,@PathVariable LocalDateTime dataHoraFim){
-        return agendamentoService.buscarAgendamentoDoDia(datahora,dataHoraFim);
+        @GetMapping("/buscaragendamento") 
+    public List<AgendamentoModel> buscarAgendamentoDoDia(
+        
+        @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime datahora, 
+        @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataHoraFim) {
+        
+        return agendamentoService.buscarAgendamentoDoDia(datahora, dataHoraFim);
     }
-    
+
     @DeleteMapping("/deletaragendamento/{id}")
      public void deletarAgendamento(Long id){
     agendamentoService.deletarAgendamento(id);}
