@@ -25,8 +25,8 @@ public class AgendamentoModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String servico;
-    private LocalDateTime dataHoraInicio;
-    private LocalDateTime datahoraFim;
+    private LocalDateTime dataInicio;
+    private LocalDateTime dataFim;
     @ManyToOne(fetch = FetchType.EAGER)
     private BarbeiroModel nomeBarbeiro;
   

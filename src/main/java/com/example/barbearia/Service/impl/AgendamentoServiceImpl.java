@@ -1,5 +1,6 @@
 package com.example.barbearia.Service.impl;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -30,8 +31,8 @@ public class AgendamentoServiceImpl implements  AgendamentoService{
 
         @Override
         public AgendamentoModel salvarAgendamento(AgendamentoModel agendamento){
-            LocalDateTime dataHora = agendamento.getDataHoraInicio();
-            LocalDateTime dataHoraFim = agendamento.getDatahoraFim();
+            LocalDateTime dataHora = agendamento.getDataInicio();
+            LocalDateTime dataHoraFim = agendamento.getDataFim();
             BarbeiroModel nomeBarbeiro = agendamento.getNomeBarbeiro();
             if(agendamentoRepository.existsByDataHoraInicioAndDatahoraFimAndNomeBarbeiro(dataHora,dataHoraFim, nomeBarbeiro)){
                 
@@ -42,8 +43,8 @@ public class AgendamentoServiceImpl implements  AgendamentoService{
         }
 
         @Override
-        public List<AgendamentoModel> buscarAgendamentoDoDia(LocalDateTime data,LocalDateTime dataHoraFim){
-            return agendamentoRepository.findByDataHoraInicioBetween(data,dataHoraFim);
+        public List<AgendamentoModel> buscarAgendamentoDoDia(LocalDate dataInicio,LocalDate dataFim){
+            return agendamentoRepository.findByDataInicioBetween(dataInicio,dataFim);
         }
 
         @Override

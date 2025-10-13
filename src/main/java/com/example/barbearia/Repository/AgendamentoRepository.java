@@ -1,5 +1,6 @@
 package com.example.barbearia.Repository;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -13,6 +14,6 @@ public interface AgendamentoRepository extends JpaRepository<AgendamentoModel,Lo
      boolean existsByDataHoraInicioAndDatahoraFimAndNomeBarbeiro(LocalDateTime dataHoraInicio,
     LocalDateTime dataHoraFim,
     BarbeiroModel nomeBarbeiro);
-    List<AgendamentoModel> findByDataHoraInicioBetween(LocalDateTime dataInicio, LocalDateTime dataFim);
+    List<AgendamentoModel> findByDataInicioBetween(LocalDate dataInicio, LocalDate dataFim);
 }
 
