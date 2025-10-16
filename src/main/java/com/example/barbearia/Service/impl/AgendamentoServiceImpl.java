@@ -34,7 +34,7 @@ public class AgendamentoServiceImpl implements  AgendamentoService{
             LocalDateTime dataHora = agendamento.getDataInicio();
             LocalDateTime dataHoraFim = agendamento.getDataFim();
             BarbeiroModel nomeBarbeiro = agendamento.getNomeBarbeiro();
-            if(agendamentoRepository.existsByDataHoraInicioAndDatahoraFimAndNomeBarbeiro(dataHora,dataHoraFim, nomeBarbeiro)){
+            if(agendamentoRepository.existsByDataInicioAndDataFimAndNomeBarbeiro(dataHora,dataHoraFim, nomeBarbeiro)){
                 
                 throw new IllegalArgumentException("Horário indisponível para o barbeiro selecionado.");
                 

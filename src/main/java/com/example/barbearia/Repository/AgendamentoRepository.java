@@ -11,7 +11,7 @@ import com.example.barbearia.Model.BarbeiroModel;
 
 
 public interface AgendamentoRepository extends JpaRepository<AgendamentoModel,Long>{
-     boolean existsByDataHoraInicioAndDatahoraFimAndNomeBarbeiro(LocalDateTime dataHoraInicio,
+     boolean existsByDataInicioAndDataFimAndNomeBarbeiro(LocalDateTime dataHoraInicio,
     LocalDateTime dataHoraFim,
     BarbeiroModel nomeBarbeiro);
     List<AgendamentoModel> findByDataInicioBetween(LocalDate dataInicio, LocalDate dataFim);
