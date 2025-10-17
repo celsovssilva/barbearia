@@ -1,10 +1,6 @@
 package com.example.barbearia.controller;
 
 
-import java.time.LocalDate;
-import java.util.List;
-
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,14 +37,7 @@ public class AgendamentoController {
         
         return  agendamentoService.buscarBarbeiroporNome(nome);
     }
-        @GetMapping("/buscaragendamento/{dataInicio}/{dataFim}") 
-    public List<AgendamentoModel> buscarAgendamentoDoDia(
-        
-        @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataInicio, 
-        @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataFim) {
-        
-        return agendamentoService.buscarAgendamentoDoDia(dataInicio, dataFim);
-    }
+       
 
     @DeleteMapping("/deletaragendamento/{id}")
      public void deletarAgendamento(Long id){

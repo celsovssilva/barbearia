@@ -14,6 +14,6 @@ public interface AgendamentoRepository extends JpaRepository<AgendamentoModel,Lo
      boolean existsByDataInicioAndDataFimAndNomeBarbeiro(LocalDateTime dataHoraInicio,
     LocalDateTime dataHoraFim,
     BarbeiroModel nomeBarbeiro);
-    List<AgendamentoModel> findByDataInicioBetween(LocalDate dataInicio, LocalDate dataFim);
+    
 }
 

@@ -42,11 +42,7 @@ public class AgendamentoServiceImpl implements  AgendamentoService{
             return agendamentoRepository.save(agendamento);
         }
 
-        @Override
-        public List<AgendamentoModel> buscarAgendamentoDoDia(LocalDate dataInicio,LocalDate dataFim){
-            return agendamentoRepository.findByDataInicioBetween(dataInicio,dataFim);
-        }
-
+       
         @Override
         public void deletarAgendamento(Long id){
             agendamentoRepository.deleteById(id);
