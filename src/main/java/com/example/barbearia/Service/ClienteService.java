@@ -11,6 +11,4 @@ public interface  ClienteService {
     ClienteModel buscarCliente(Long id);
     void deletarCliente(Long id);
 
-  
-
 }
