@@ -1,8 +1,6 @@
 package com.example.barbearia.Service.impl;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -42,7 +40,21 @@ public class AgendamentoServiceImpl implements  AgendamentoService{
             return agendamentoRepository.save(agendamento);
         }
 
-       
+        @Override
+        public AgendamentoModel atualizarAgendamento(AgendamentoModel agendamento) {
+            LocalDateTime dataHora = agendamento.getDataInicio();
+            LocalDateTime dataFim = agendamento.getDataFim();
+            BarbeiroModel nomeBarbeiro = agendamento.getNomeBarbeiro();
+            if (agendamentoRepository.existsByDataInicioAndDataFimAndNomeBarbeiro(dataHora, dataFim,
+                    nomeBarbeiro)) {
+                        throw new IllegalArgumentException ("horário está ocupado");
+                        
+                    }
+            else{
+                            return agendamentoRepository.save(agendamento);
+                        }
+        }
+
         @Override
         public void deletarAgendamento(Long id){
             agendamentoRepository.deleteById(id);

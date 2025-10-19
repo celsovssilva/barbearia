@@ -2,8 +2,6 @@ package com.example.barbearia.Model;
 
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -30,7 +28,6 @@ public class AgendamentoModel {
     private LocalDateTime dataInicio;
     private LocalDateTime dataFim;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonManagedReference
     private BarbeiroModel nomeBarbeiro;
   
 

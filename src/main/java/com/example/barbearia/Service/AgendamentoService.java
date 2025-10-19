@@ -10,7 +10,9 @@ public interface AgendamentoService {
   
     public BarbeiroModel buscarBarbeiroporNome(String nome);
     public AgendamentoModel salvarAgendamento(AgendamentoModel agendamento);
+    public AgendamentoModel atualizarAgendamento(AgendamentoModel agendamento);
     public void deletarAgendamento(Long id);
+    
 
     
 }
