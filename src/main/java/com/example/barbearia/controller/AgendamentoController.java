@@ -28,30 +28,35 @@ public class AgendamentoController {
         this.agendamentoRepository = agendamentoRepository;
     }
 
-    @PostMapping("/agendamento")
-    public AgendamentoModel salvarAgendamento(@RequestBody AgendamentoModel agendamentoModel){
-        return agendamentoService.salvarAgendamento(agendamentoModel);
-        
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<AgendamentoModel> salvarAgendamento(@RequestBody AgendamentoModel agendamentoModel) {
+        AgendamentoModel agendamentoSalvo = agendamentoService.salvarAgendamento(agendamentoModel);
+        return ResponseEntity.ok(agendamentoSalvo);
     }
 
-    @GetMapping("/buscar/{nome}")
-    public BarbeiroModel buscarBarbeiroporNome(@PathVariable String nome) {
-
-        return agendamentoService.buscarBarbeiroporNome(nome);
+    @GetMapping("/barbeiro/{nome}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<BarbeiroModel> buscarBarbeiroPorNome(@PathVariable String nome) {
+        BarbeiroModel barbeiro = agendamentoService.buscarBarbeiroporNome(nome);
+        return ResponseEntity.ok(barbeiro);
     }
-    
+
     @PutMapping("atualizar/{id}")
-    public AgendamentoModel atualizarAgendamento(@RequestBody AgendamentoModel agendamento) {
-        
-        
-        return agendamentoService.atualizarAgendamento(agendamento);
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<AgendamentoModel> atualizarAgendamento(
+            @PathVariable Long id,
+            @RequestBody AgendamentoModel agendamento) {
+        AgendamentoModel agendamentoAtualizado = agendamentoService.atualizarAgendamento(id, agendamento);
+        return ResponseEntity.ok(agendamentoAtualizado);
     }
-       
 
-    @DeleteMapping("/deletaragendamento/{id}")
-     public void deletarAgendamento(Long id){
-    agendamentoService.deletarAgendamento(id);}
 
+    @DeleteMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<Void> deletarAgendamento(@PathVariable Long id) {
+        agendamentoService.deletarAgendamento(id);
+        return ResponseEntity.noContent().build();
+    }
     
 
     

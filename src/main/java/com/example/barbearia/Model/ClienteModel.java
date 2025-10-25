@@ -14,7 +14,7 @@ import lombok.Setter;
 @Table(name="cliente")
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClienteModel {
+public class ClienteModel implements UserDetails {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Getter
@@ -29,6 +29,51 @@ public class ClienteModel {
     @Getter 
     @Setter
     private int idade;
+
+    @Getter
+    @Setter
+    private String senha;
+
+    @Enumerated(EnumType.STRING)
+    @Getter
+    @Setter
+    private Role role = Role.CLIENTE;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singletonList(role);
+    }
+
+    @Override
+    public String getPassword() {
+        return this.senha;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true; // Conta nunca expira
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true; // Conta nunca é bloqueada
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true; // Credenciais nunca expiram
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true; // Conta sempre ativa
+    }
+}
     
 
   
